@@ -30,18 +30,18 @@ and add the relative line in the AppKernel.php
         {
             return array(
                 // ...
-                new Bundle\BluePrintBundle\BluePrintBundle(),
+                new Sonata\BluePrintBundle\SonataBluePrintBundle(),
                 // ...
             );
         }
 
 4) Publish assets from both the bundles. From the root of your project:
 
-    $ ./app/console publish:assets --symlink web/
+    $ ./app/console assets:install --symlink web/
 
 5) add a **block named header** in the \<head\> section of your main template file:
 
-    //app/views/layout.twig
+    //app/views/base.html.twig
     <head>
         // ...
         {% block header %}{% endblock %}
