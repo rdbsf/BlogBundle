@@ -162,4 +162,31 @@ class BlogController extends Controller
             'posts' => $tag->getPosts()
         ));
     }
+
+        /**
+     * @route: blog_new
+     * Tag Controller
+     */
+    public function newAction()
+    {
+        // entity manager and query builder objects
+        $em = $this->getEm();
+
+
+        $query = new Query($em);
+        $query->setDQL(
+            'SELECT p,comments
+                FROM Bundle\BlogBundle\Entity\Post p
+                JOIN p.comments comments
+                ORDER BY p.date DESC'
+        );
+        $query->setMaxResults(1);
+        //$query->setParameter(1, $slug);
+        $posts = $query->getResult();
+
+
+        return $this->render('BlogBundle:Blog:post.html.twig', array(
+            'post' => $posts[0]
+        ));
+    }
 }

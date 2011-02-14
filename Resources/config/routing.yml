@@ -8,6 +8,11 @@ blog_post:
     defaults:
         _controller: BlogBundle:Blog:post
 
+blog_new:
+    pattern:  /blog/new
+    defaults:
+        _controller: BlogBundle:Blog:new
+
 blog_categories:
     pattern:  /blog/categories
     defaults:
